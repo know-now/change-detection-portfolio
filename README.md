@@ -1,79 +1,97 @@
-# 🏗️ Автоматичне детектування змін на будівельному майданчику
+🏗️ Automated Change Detection on Construction Sites
+====================================================
 
-[cite_start]Цей проект є портфоліо-реалізацією для демонстрації навичок у геоматиці та обробці зображень, як того вимагає вакансія **"Ingénieur(e) - Géomatique & IA"**[cite: 7, 8].
+This is a portfolio project designed to demonstrate skills in **geomatics** and **image processing**, specifically tailored to the requirements of the _"Ingénieur(e) - Géomatique & IA"_ position.
 
-Мета проекту — автоматично виявляти та візуалізувати зміни на будівельному майданчику, порівнюючи два ортофотоплани, зроблені в різний час. [cite_start]Це завдання безпосередньо відповідає вимозі "застосовувати інтелект для детектування змін (détection de changements)" [cite: 25] [cite_start]та "автоматизувати робочі процеси"[cite: 24].
+The goal of this project is to **automatically detect and visualize changes** on a construction site by comparing two orthophotos taken at different times. This task directly addresses the job description's requirements to:
 
-## 📋 Основні можливості
+*   _apply artificial intelligence for change detection (détection de changements)_
+    
+*   _automate workflows_
+    
 
-* **Порівняння двох зображень:** Скрипт приймає два геопросторові растрові файли (`.tif`) як вхідні дані.
-* **Виявлення змін:** Використовує попіксельне порівняння для ідентифікації зон зі значними відмінностями.
-* **Векторизація результатів:** Створює векторний файл (`.geojson`), що окреслює зони змін, для подальшого аналізу в ГІС-системах (QGIS, ArcGIS).
-* **Візуалізація:** Генерує растрове зображення-маску, де чітко видно зони змін.
+📋 Key Features
+---------------
 
-## 🛠️ Використані технології
+*   **Image Comparison**: The script takes two geospatial raster files (.tif) as input.
+    
+*   **Change Detection**: Uses pixel-by-pixel comparison to identify areas with significant differences.
+    
+*   **Result Vectorization**: Creates a vector file (.geojson) outlining the zones of change for further analysis in GIS software (QGIS, ArcGIS).
+    
+*   **Visualization**: Generates a raster mask image that clearly highlights the detected changes.
+    
 
-* **Мова:** Python 3.9+
-* **Основні бібліотеки:**
-    * `rasterio` - для читання та запису геопросторових растрових даних.
-    * `geopandas` - для роботи з векторними даними та збереження результатів у GeoJSON.
-    * `scikit-image` - для алгоритмів обробки зображень.
-    * `numpy` - для числових операцій з масивами.
+🛠️ Tech Stack
+--------------
 
-## 🚀 Як запустити проект
+*   **Language**: Python 3.9+
+    
+*   **Core Libraries**:
+    
+    *   rasterio – For reading and writing geospatial raster data
+        
+    *   geopandas – For handling vector data and saving results to GeoJSON
+        
+    *   scikit-image – For image processing algorithms
+        
+    *   numpy – For numerical operations with arrays
+        
 
-### Крок 1: Клонування репозиторію
+🚀 How to Run the Project
+-------------------------
 
-```bash
-git clone [https://github.com/your-username/change-detection-portfolio.git](https://github.com/your-username/change-detection-portfolio.git)
-cd change-detection-portfolio
-```
+### Step 1: Clone the Repository
 
-### Крок 2: Створення віртуального середовища та встановлення залежностей
+`   git clone https://github.com/your-username/change-detection-portfolio.git  cd change-detection-portfolio   `
 
-Рекомендується використовувати віртуальне середовище для уникнення конфліктів бібліотек.
+### Step 2: Create a Virtual Environment and Install Dependencies
 
-```bash
-python -m venv venv
-source venv/bin/activate  # Для Windows: venv\Scripts\activate
-```
+It is recommended to use a virtual environment to avoid library conflicts.
 
-Встановіть необхідні бібліотеки з файлу `requirements.txt`:
+`   python -m venv venv  source venv/bin/activate  # On Windows: venv\Scripts\activate  pip install -r requirements.txt   `
 
-```bash
-pip install -r requirements.txt
-```
+### Step 3: Prepare the Data
 
-### Крок 3: Підготовка даних
+*   Obtain two orthophotos of the same area taken at different times in **GeoTIFF (.tif)** format.
+    
+*   Ensure both images share the same CRS (Coordinate Reference System).
+    
+*   Place them into the data/ directory.
+    
+*   Rename the files:
+    
+    *   before.tif (older image)
+        
+    *   after.tif (newer image)
+        
 
-1.  Знайдіть два ортофотоплани однієї й тієї ж місцевості, зроблені в різний час. Вони повинні бути у форматі GeoTIFF (`.tif`) і мати однакову систему координат.
-2.  Помістіть їх у папку `data/`.
-3.  Перейменуйте файли на `before.tif` (старіший знімок) та `after.tif` (новіший знімок).
+💡 _Tip: If you don't have your own data, check open datasets like_ [_SEN12-CC_](https://mediatum.ub.tum.de/1474000) _or other aerial imagery sources._
 
-*Примітка: Якщо у вас немає власних даних, ви можете знайти відкриті набори даних, наприклад, [SEN12-CC dataset](https://github.com/schmitt-muc/SEN12-CC) або інші ресурси з аерофотознімками.*
+### Step 4: Run the Script
 
-### Крок 4: Запуск скрипту
+`   python src/change_detection.py   `
 
-Виконайте головний скрипт з папки `src/`.
+### Step 5: Check the Results
 
-```bash
-python src/change_detection.py
-```
+After execution, two new files will appear in the output/ directory:
 
-### Крок 5: Перевірка результатів
+*   changes\_mask.tif – Raster image where areas of change are marked in white
+    
+*   changes\_polygons.geojson – Vector file containing polygons outlining these areas
+    
 
-Після успішного виконання скрипту в папці `output/` з'являться два файли:
-* `changes_mask.tif` - растрове зображення, де білим кольором позначені зони змін.
-* `changes_polygons.geojson` - векторний файл з полігонами, що окреслюють ці зони.
+You can open these files in any GIS software (e.g., **QGIS**, **ArcGIS**) to analyze the results.
 
-Ви можете відкрити ці файли у будь-якій ГІС-програмі, наприклад, у QGIS, щоб проаналізувати результати.
+🎯 How This Project Addresses the Needs of SECO Luxembourg
+----------------------------------------------------------
 
+This tool demonstrates the ability to:
 
-
-## 🎯 Як цей проект відповідає потребам SECO Luxembourg
-
-Цей інструмент демонструє здатність:
-* [cite_start]**Автоматизувати аналіз** геопросторових даних, скорочуючи час на ручний моніторинг[cite: 24].
-* [cite_start]**Застосовувати комп'ютерний зір** для вирішення практичних інженерних завдань[cite: 25].
-* [cite_start]**Структурувати та аналізувати** великі обсяги даних, перетворюючи їх на корисну інформацію[cite: 32].
-* [cite_start]Створювати основу для більш складних систем, таких як **платформи для моніторингу та цифрові двійники**[cite: 26].
+*   **Automate** the analysis of geospatial data, reducing manual monitoring time
+    
+*   **Apply computer vision** to solve practical engineering challenges
+    
+*   **Structure and analyze large datasets**, turning them into actionable insights
+    
+*   **Create foundations** for advanced systems such as monitoring platforms and digital twins
