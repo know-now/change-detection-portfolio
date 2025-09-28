@@ -43,13 +43,13 @@ The goal of this project is to **automatically detect and visualize changes** on
 
 ### Step 1: Clone the Repository
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   git clone https://github.com/your-username/change-detection-portfolio.git  cd change-detection-portfolio   `
+`   git clone https://github.com/your-username/change-detection-portfolio.git  cd change-detection-portfolio   `
 
 ### Step 2: Create a Virtual Environment and Install Dependencies
 
 It is recommended to use a virtual environment to avoid library conflicts.
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python -m venv venv  source venv/bin/activate  # On Windows: venv\Scripts\activate  pip install -r requirements.txt   `
+`   python -m venv venv  source venv/bin/activate  # On Windows: venv\Scripts\activate  pip install -r requirements.txt   `
 
 ### Step 3: Prepare the Data
 
@@ -70,7 +70,7 @@ Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQL
 
 ### Step 4: Run the Script
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python src/change_detection.py   `
+`   python src/change_detection.py   `
 
 ### Step 5: Check the Results
 
