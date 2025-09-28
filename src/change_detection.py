@@ -5,6 +5,7 @@ import numpy as np
 from skimage.filters import threshold_otsu
 from skimage.morphology import remove_small_objects, remove_small_holes
 import os
+from shapely.geometry import shape
 
 def detect_changes(before_path, after_path, output_dir):
     """
@@ -70,7 +71,7 @@ def detect_changes(before_path, after_path, output_dir):
     mask_shapes = shapes(final_mask, mask=(final_mask > 0), transform=before_src.transform)
     
     # Створюємо GeoDataFrame з отриманих полігонів
-    geometries = [shape for shape, value in mask_shapes]
+    geometries = [shape(geom) for geom, value in mask_shapes]
     gdf = gpd.GeoDataFrame(geometry=geometries, crs=before_src.crs)
     
     # Зберігаємо векторний файл
