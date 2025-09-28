@@ -83,7 +83,7 @@ After execution, two new files will appear in the output/ directory:
 
 You can open these files in any GIS software (e.g., **QGIS**, **ArcGIS**) to analyze the results.
 
-🎯 How This Project Addresses the Needs of SECO Luxembourg
+🎯 How This Project Addresses the Needs of Companies 
 ----------------------------------------------------------
 
 This tool demonstrates the ability to:
